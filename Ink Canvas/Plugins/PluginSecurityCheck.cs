@@ -17,6 +17,7 @@ namespace Ink_Canvas.Plugins
     /// </summary>
     public class PluginSecurityCheck
     {
+        private const string SecAgentIntegrationPluginId = "inkcanvas.iccce.secagent";
         private readonly PluginMarketService _market;
 
         public PluginSecurityCheck(PluginMarketService market)
@@ -63,6 +64,19 @@ namespace Ink_Canvas.Plugins
                 {
                     verdict.TrustLevel = PluginTrustLevel.Unknown;
                     verdict.Reasons.Add("无法解析 manifest.json，可能不是 ICC-CE 标准插件包。");
+                    return verdict;
+                }
+
+                // SecAgent downloads this fixed integration package and verifies
+                // the GitHub-provided SHA-256, while ICC-CE deliberately does not
+                // duplicate that package in the ICC-CE market index. Treat the
+                // declared integration id as a known package so the pending-package
+                // scanner can consume it after SecAgent's UAC-authorized handoff.
+                // Other local .icpx packages retain the explicit-confirmation path.
+                if (string.Equals(declaredPluginId, SecAgentIntegrationPluginId, StringComparison.OrdinalIgnoreCase))
+                {
+                    verdict.TrustLevel = PluginTrustLevel.Known;
+                    verdict.Reasons.Add("SecAgent 官方集成插件；包完整性由 SecAgent 下载校验负责。");
                     return verdict;
                 }
 
