@@ -8,6 +8,8 @@
 │   ├── 基本
 │   │   └── TextBlock "行为"
 │   │       ├── SettingsCard: 开机自启 → ToggleSwitch
+│   │       ├── SettingsCard: 快速启动模式 → ToggleSwitch
+│   │       ├── LabeledSettingsCard: 仅PPT模式 → ToggleSwitch
 │   │       ├── SettingsCard: 注册 Url 协议 → ToggleSwitch
 │   │       ├── SettingsExpander: 托盘图标 → ToggleSwitch（开则展开）
 │   │       │   ├── SettingsCard: 鼠标左键/触屏单击时 → ComboBox
@@ -116,7 +118,9 @@
 │   └── 快捷键
 │       ├── InfoBar: 快捷键说明
 │       ├── TextBlock "鼠标模式"
-│       │   └── LabeledSettingsCard: 鼠标模式下启用快捷键 → ToggleSwitch
+│       │   ├── LabeledSettingsCard: 鼠标模式下启用快捷键 → ToggleSwitch
+│       │   ├── LabeledSettingsCard: 绘制模式下滚轮穿透 → ToggleSwitch
+│       │   └── LabeledSettingsCard: PPT 放映时接管 PageUp/PageDown → ToggleSwitch
 │       ├── TextBlock "基本操作"
 │       │   ├── HotkeyItem: 撤销
 │       │   ├── HotkeyItem: 重做
@@ -348,7 +352,8 @@
 │   │   │   │   ├── TextBlock "组件属性"
 │   │   │   │   │   ├── SettingsCard: 分隔边框 → CheckBox
 │   │   │   │   │   ├── SettingsCard: 红色样式 → CheckBox
-│   │   │   │   │   └── StackPanel: 快速调色板显示模式 → ComboBox
+│   │   │   │   │   ├── StackPanel: 快速调色板显示模式 → ComboBox
+│   │   │   │   │   └── SettingsCard: 清并鼠组件名称 → ComboBox
 │   │   │   │   ├── TextBlock "尺寸"
 │   │   │   │   │   └── Grid: 固定宽高/最小最大宽高 → TextBox × 6
 │   │   │   │   ├── TextBlock "对齐"

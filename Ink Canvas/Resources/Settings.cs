@@ -5,6 +5,7 @@ using OSVersionExtension;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace Ink_Canvas
 {
@@ -54,6 +55,9 @@ namespace Ink_Canvas
 
         [JsonProperty("notification")]
         public NotificationSettings Notification { get; set; } = new NotificationSettings();
+
+        [JsonProperty("timer")]
+        public TimerSettings Timer { get; set; } = new TimerSettings();
 
         [JsonProperty("toolbar")]
         public ToolbarLayoutSettings Toolbar { get; set; } = new ToolbarLayoutSettings();
@@ -299,6 +303,12 @@ namespace Ink_Canvas
         public bool IsDictationDoNotDisturbInWhiteboardEnabled { get; set; } = true;
     }
 
+    public class TimerSettings
+    {
+        [JsonProperty("isOpenTransparency")]
+        public bool IsOpenTransparency { get; set; } = true;
+    }
+
     public class Security
     {
         [JsonProperty("passwordEnabled")]
@@ -416,6 +426,9 @@ namespace Ink_Canvas
         public bool IsCompressPicturesUploaded { get; set; }
         [JsonProperty("enablePalmEraser")]
         public bool EnablePalmEraser { get; set; } = true;
+        /// <summary>实验性：启用 WinRT 系统墨迹管线（CoreInkIndependentInputSource + 系统 Wet Ink），关闭时回退 WPF 原生墨迹。</summary>
+        [JsonProperty("useWinRTInk")]
+        public bool UseWinRTInk { get; set; } = false;
         [JsonProperty("palmEraserSensitivity")]
         public int PalmEraserSensitivity { get; set; } = 0; // 0-低敏感度, 1-中敏感度, 2-高敏感度
         [JsonProperty("clearCanvasAlsoClearImages")]
@@ -517,6 +530,13 @@ namespace Ink_Canvas
         public bool VideoPresenterMirrorVertical { get; set; } = false;
 
         /// <summary>
+        /// 视频展台旋转角度，0/1/2/3 分别对应 0°/90°/180°/270°，0 为摄像头默认方向。
+        /// 与 <see cref="CameraSettings.RotationAngle"/> 独立，仅作用于展台预览/拍照。
+        /// </summary>
+        [JsonProperty("videoPresenterRotationAngle")]
+        public int VideoPresenterRotationAngle { get; set; } = 0;
+
+        /// <summary>
         /// 是否在书写位置贴近画布边缘时显示"扩展画布"提示按钮。
         /// 默认关闭，避免在 PPT 演示、桌面批注等场景干扰；开启后在白板书写时贴近边缘会自动浮现提示。
         /// </summary>
@@ -549,6 +569,37 @@ namespace Ink_Canvas
         /// </summary>
         [JsonProperty("edgeExpandAutoHideMs")]
         public double EdgeExpandAutoHideMs { get; set; } = 5000;
+
+        /// <summary>
+        /// 是否启用批注状态点提示：在批注模式下连续点击画布时，显示提示提醒用户当前处于批注模式。
+        /// 默认关闭，避免打扰
+        /// </summary>
+        [JsonProperty("isEnableAnnotationDotHint")]
+        public bool IsEnableAnnotationDotHint { get; set; } = false;
+
+        /// <summary>
+        /// 批注点提示的连续点击范围阈值（像素）。当连续点击的位置都在此半径范围内时触发提示。
+        /// </summary>
+        [JsonProperty("annotationDotHintClusterRadius")]
+        public double AnnotationDotHintClusterRadius { get; set; } = 50;
+
+        /// <summary>
+        /// 单次触发笔迹长度阈值（像素）。笔迹包围盒最大边长小于此值视为"点击"而非"书写"。
+        /// </summary>
+        [JsonProperty("annotationDotHintStrokeLengthThreshold")]
+        public double AnnotationDotHintStrokeLengthThreshold { get; set; } = 10;
+
+        /// <summary>
+        /// 触发提示的最小连续点击次数。
+        /// </summary>
+        [JsonProperty("annotationDotHintClickCount")]
+        public int AnnotationDotHintClickCount { get; set; } = 3;
+
+        /// <summary>
+        /// 提示显示时长（秒）。超过后自动隐藏。
+        /// </summary>
+        [JsonProperty("annotationDotHintDisplayDurationSeconds")]
+        public double AnnotationDotHintDisplayDurationSeconds { get; set; } = 3;
 
     }
 
@@ -586,6 +637,11 @@ namespace Ink_Canvas
         public bool IsEnableTwoFingerTranslateBoard { get; set; } = true;
         [JsonProperty("isEnableTwoFingerRotationBoard")]
         public bool IsEnableTwoFingerRotationBoard { get; set; }
+
+        [JsonProperty("isEnableTwoFingerZoomRoaming")]
+        public bool IsEnableTwoFingerZoomRoaming { get; set; } = true;
+        [JsonProperty("isEnableTwoFingerRotationRoaming")]
+        public bool IsEnableTwoFingerRotationRoaming { get; set; }
     }
 
     // 更新通道枚举
@@ -624,8 +680,18 @@ namespace Ink_Canvas
         Extended = 2
     }
 
+    public enum StartupMode
+    {
+        Default = 0,
+        Faster = 1,
+        Fastest = 2
+    }
+
     public class Startup
     {
+        private StartupMode _startupMode = StartupMode.Default;
+        private bool _hasExplicitStartupMode;
+
         [JsonProperty("isAutoUpdate")]
         public bool IsAutoUpdate { get; set; } = true;
         [JsonProperty("isAutoUpdateWithSilence")]
@@ -648,8 +714,18 @@ namespace Ink_Canvas
         public bool IsEnableNibMode { get; set; }
         [JsonProperty("isFoldAtStartup")]
         public bool IsFoldAtStartup { get; set; }
-        [JsonProperty("enableFastStartup")]
-        public bool EnableFastStartup { get; set; }
+        [JsonProperty("startupMode")]
+        public StartupMode StartupMode
+        {
+            get => _startupMode;
+            set
+            {
+                _startupMode = Enum.IsDefined(typeof(StartupMode), value) ? value : StartupMode.Default;
+                _hasExplicitStartupMode = true;
+            }
+        }
+        [JsonProperty("enableFastStartup", NullValueHandling = NullValueHandling.Ignore)]
+        private bool? LegacyEnableFastStartup { get; set; }
         [JsonProperty("crashAction")]
         public int CrashAction { get; set; } = 2;
         [JsonProperty("telemetryUploadLevel")]
@@ -660,6 +736,17 @@ namespace Ink_Canvas
         public bool HasShownOobe { get; set; } = false;
         [JsonProperty("enableWindowChromeRendering")]
         public bool EnableWindowChromeRendering { get; set; } = false;
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            if (!_hasExplicitStartupMode && LegacyEnableFastStartup.HasValue)
+            {
+                _startupMode = LegacyEnableFastStartup.Value ? StartupMode.Fastest : StartupMode.Faster;
+            }
+
+            LegacyEnableFastStartup = null;
+        }
     }
 
     public enum TrayClickAction
@@ -787,6 +874,12 @@ namespace Ink_Canvas
         [JsonProperty("hideFloatingBarBorder")]
         public bool HideFloatingBarBorder { get; set; } = false;
 
+        [JsonProperty("enableFloatingBarShadow")]
+        public bool EnableFloatingBarShadow { get; set; } = true;
+
+        [JsonProperty("floatingBarShadowSize")]
+        public double FloatingBarShadowSize { get; set; } = 16;
+
         [JsonProperty("floatingBarBorderColor")]
         public string FloatingBarBorderColor { get; set; } = "";
 
@@ -810,6 +903,9 @@ namespace Ink_Canvas
 
         [JsonProperty("passThroughMouseWheelInDrawingMode")]
         public bool PassThroughMouseWheelInDrawingMode { get; set; } = false;
+
+        [JsonProperty("enablePPTPageKeyHook")]
+        public bool EnablePPTPageKeyHook { get; set; } = false;
 
         [JsonProperty("language")]
         public string Language { get; set; } = "";
@@ -956,6 +1052,13 @@ namespace Ink_Canvas
 
         [JsonProperty("pptNavBarScale")]
         public double PPTNavBarScale { get; set; } = 1.0;
+
+        // 翻页按钮的四边投影阴影（独立于浮动栏阴影设置）
+        [JsonProperty("enablePPTNavBarShadow")]
+        public bool EnablePPTNavBarShadow { get; set; } = true;
+
+        [JsonProperty("pptNavBarShadowSize")]
+        public double PPTNavBarShadowSize { get; set; } = 16;
 
         // 全局默认设置（各位置"使用全局设置"开启时引用这些值）
         [JsonProperty("pptGlobalButtonEnabled")]
@@ -1314,6 +1417,15 @@ namespace Ink_Canvas
         [JsonProperty("isSaveScreenshotsInDateFolders")]
         public bool IsSaveScreenshotsInDateFolders { get; set; }
 
+        [JsonProperty("screenshotSaveFormat")]
+        public int ScreenshotSaveFormat { get; set; } = 0;
+
+        [JsonProperty("screenshotJpegQuality")]
+        public long ScreenshotJpegQuality { get; set; } = 90;
+
+        [JsonProperty("screenshotScaleMode")]
+        public int ScreenshotScaleMode { get; set; } = 0;
+
         [JsonProperty("isAutoSaveStrokesAtScreenshot")]
         public bool IsAutoSaveStrokesAtScreenshot { get; set; }
 
@@ -1474,6 +1586,9 @@ namespace Ink_Canvas
 
         [JsonProperty("isDebugConsoleEnabled")]
         public bool IsDebugConsoleEnabled { get; set; } = false;
+
+        [JsonProperty("logLevel")]
+        public string LogLevel { get; set; } = "Trace";
 
         [JsonProperty("isPPTComDebugProbeEnabled")]
         public bool IsPPTComDebugProbeEnabled { get; set; } = false;

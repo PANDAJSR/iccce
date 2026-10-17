@@ -130,6 +130,8 @@ namespace Ink_Canvas.Properties
 
         public static string FloatingBar_Mouse => ResourceManager.GetString(nameof(FloatingBar_Mouse), _resourceCulture);
 
+        public static string FloatingBar_MouseClear => ResourceManager.GetString(nameof(FloatingBar_MouseClear), _resourceCulture);
+
         public static string FloatingBar_StrokeEraser => ResourceManager.GetString(nameof(FloatingBar_StrokeEraser), _resourceCulture);
 
         public static string FloatingBar_Unfreeze => ResourceManager.GetString(nameof(FloatingBar_Unfreeze), _resourceCulture);
@@ -310,7 +312,15 @@ namespace Ink_Canvas.Properties
 
         public static string ToolbarPage_RedStyleDesc => ResourceManager.GetString(nameof(ToolbarPage_RedStyleDesc), _resourceCulture);
 
+        public static string ToolbarPage_RedStyleIcon => ResourceManager.GetString(nameof(ToolbarPage_RedStyleIcon), _resourceCulture);
+
+        public static string ToolbarPage_RedStyleText => ResourceManager.GetString(nameof(ToolbarPage_RedStyleText), _resourceCulture);
+
         public static string ToolbarPage_QuickPaletteDisplayModeDesc => ResourceManager.GetString(nameof(ToolbarPage_QuickPaletteDisplayModeDesc), _resourceCulture);
+
+        public static string ToolbarPage_ComponentName => ResourceManager.GetString(nameof(ToolbarPage_ComponentName), _resourceCulture);
+
+        public static string ToolbarPage_ComponentNameDesc => ResourceManager.GetString(nameof(ToolbarPage_ComponentNameDesc), _resourceCulture);
 
         public static string ToolbarPage_ResetComponentSettings => ResourceManager.GetString(nameof(ToolbarPage_ResetComponentSettings), _resourceCulture);
 
@@ -469,6 +479,34 @@ namespace Ink_Canvas.Properties
         public static string Canvas_EdgeExpandHint_Settings_AutoHideDelay => ResourceManager.GetString(nameof(Canvas_EdgeExpandHint_Settings_AutoHideDelay), _resourceCulture);
 
         public static string Canvas_EdgeExpandHint_Settings_AutoHideDelayHint => ResourceManager.GetString(nameof(Canvas_EdgeExpandHint_Settings_AutoHideDelayHint), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Text => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Text), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Keep => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Keep), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Exit => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Exit), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_Enable => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_Enable), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_EnableHint => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_EnableHint), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_ClusterRadius => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_ClusterRadius), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_StrokeLength => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_StrokeLength), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_ClickCount => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_ClickCount), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_DisplayDuration => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_DisplayDuration), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_Preview => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_Preview), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_PreviewHint => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_PreviewHint), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_PreviewPlaceholder => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_PreviewPlaceholder), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_PreviewLabel => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_PreviewLabel), _resourceCulture);
+
+        public static string Canvas_AnnotationDotHint_Settings_PreviewTriggered => ResourceManager.GetString(nameof(Canvas_AnnotationDotHint_Settings_PreviewTriggered), _resourceCulture);
 
         public static string IdleMiniBar_StartAnnotate => ResourceManager.GetString(nameof(IdleMiniBar_StartAnnotate), _resourceCulture);
 

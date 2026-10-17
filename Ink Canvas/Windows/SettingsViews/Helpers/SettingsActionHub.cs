@@ -370,10 +370,28 @@ namespace Ink_Canvas.Windows.SettingsViews.Helpers
             if (mw != null) mw.ApplyHideFloatingBarBorder(isOn);
         }
 
+        public static void OnFloatingBarShadowChanged()
+        {
+            var mw = GetMainWindow();
+            if (mw != null) mw.ApplyFloatingBarShadow();
+        }
+
+        public static void OnPPTNavBarShadowChanged()
+        {
+            var mw = GetMainWindow();
+            if (mw != null) mw.ApplyPPTNavBarShadow();
+        }
+
         public static void OnFloatingBarBorderColorChanged()
         {
             var mw = GetMainWindow();
             if (mw != null) mw.ApplyFloatingBarBorderColor();
+        }
+
+        public static void OnColorfulFloatingBarChanged()
+        {
+            var mw = GetMainWindow();
+            if (mw != null) mw.ApplyColorfulFloatingBar();
         }
 
         public static void OnEnableIdleMiniBarChanged(bool isOn)
@@ -610,11 +628,7 @@ namespace Ink_Canvas.Windows.SettingsViews.Helpers
         public static void OnShowPPTButtonChanged(bool isOn)
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null)
-            {
-                mw.PPTUIManager.ShowPPTButton = isOn;
-                mw.PPTUIManager.UpdateNavigationPanelsVisibility();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnShowPPTSidebarByDefaultChanged()
@@ -633,73 +647,37 @@ namespace Ink_Canvas.Windows.SettingsViews.Helpers
         public static void OnPPTButtonOpacityChanged(string buttonKey, double value)
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null)
-            {
-                switch (buttonKey)
-                {
-                    case "LS": mw.PPTUIManager.PPTLSButtonOpacity = value; break;
-                    case "RS": mw.PPTUIManager.PPTRSButtonOpacity = value; break;
-                    case "LB": mw.PPTUIManager.PPTLBButtonOpacity = value; break;
-                    case "RB": mw.PPTUIManager.PPTRBButtonOpacity = value; break;
-                }
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTButtonsDisplayOptionChanged()
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null && mw.IsInPPTPresentationMode)
-            {
-                mw.PPTUIManager.PPTButtonsDisplayOption = SettingsManager.Settings.PowerPointSettings.PPTButtonsDisplayOption;
-                mw.PPTUIManager.UpdateNavigationPanelsVisibility();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTSButtonsOptionChanged()
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null && mw.IsInPPTPresentationMode)
-            {
-                mw.PPTUIManager.PPTSButtonsOption = SettingsManager.Settings.PowerPointSettings.PPTSButtonsOption;
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTSButtonsOptionWithOpacityChanged()
         {
             var mw = GetMainWindow();
-            var ppt = SettingsManager.Settings.PowerPointSettings;
-            if (mw?.PPTUIManager != null && mw.IsInPPTPresentationMode)
-            {
-                mw.PPTUIManager.PPTSButtonsOption = ppt.PPTSButtonsOption;
-                mw.PPTUIManager.PPTLSButtonOpacity = ppt.PPTLSButtonOpacity;
-                mw.PPTUIManager.PPTRSButtonOpacity = ppt.PPTRSButtonOpacity;
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTBButtonsOptionChanged()
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null && mw.IsInPPTPresentationMode)
-            {
-                mw.PPTUIManager.PPTBButtonsOption = SettingsManager.Settings.PowerPointSettings.PPTBButtonsOption;
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTBButtonsOptionWithOpacityChanged()
         {
             var mw = GetMainWindow();
-            var ppt = SettingsManager.Settings.PowerPointSettings;
-            if (mw?.PPTUIManager != null && mw.IsInPPTPresentationMode)
-            {
-                mw.PPTUIManager.PPTBButtonsOption = ppt.PPTBButtonsOption;
-                mw.PPTUIManager.PPTLBButtonOpacity = ppt.PPTLBButtonOpacity;
-                mw.PPTUIManager.PPTRBButtonOpacity = ppt.PPTRBButtonOpacity;
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         public static void OnPPTTimeCapsuleChanged()
@@ -742,11 +720,7 @@ namespace Ink_Canvas.Windows.SettingsViews.Helpers
         public static void OnPPTNavBarScaleChanged(double scale)
         {
             var mw = GetMainWindow();
-            if (mw?.PPTUIManager != null)
-            {
-                mw.PPTUIManager.PPTNavBarScale = scale;
-                mw.PPTUIManager.UpdateNavigationButtonStyles();
-            }
+            mw?.UpdatePPTUIManagerSettings();
         }
 
         /// <summary>

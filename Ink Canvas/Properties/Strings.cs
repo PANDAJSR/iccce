@@ -418,6 +418,7 @@ namespace Ink_Canvas.Properties
             dict["FloatingBar_Hide"] = ("FloatingBarStrings", "FloatingBar_Hide");
             dict["FloatingBar_LassoSelect"] = ("FloatingBarStrings", "FloatingBar_LassoSelect");
             dict["FloatingBar_Mouse"] = ("FloatingBarStrings", "FloatingBar_Mouse");
+            dict["FloatingBar_MouseClear"] = ("FloatingBarStrings", "FloatingBar_MouseClear");
             dict["FloatingBar_StrokeEraser"] = ("FloatingBarStrings", "FloatingBar_StrokeEraser");
             dict["FloatingBar_Unfreeze"] = ("FloatingBarStrings", "FloatingBar_Unfreeze");
             dict["FloatingBar_Whiteboard"] = ("FloatingBarStrings", "FloatingBar_Whiteboard");
@@ -442,6 +443,20 @@ namespace Ink_Canvas.Properties
             dict["Canvas_EdgeExpandHint_Settings_WhiteboardOnlyHint"] = ("FloatingBarStrings", "Canvas_EdgeExpandHint_Settings_WhiteboardOnlyHint");
             dict["Canvas_EdgeExpandHint_Settings_AutoHideDelay"] = ("FloatingBarStrings", "Canvas_EdgeExpandHint_Settings_AutoHideDelay");
             dict["Canvas_EdgeExpandHint_Settings_AutoHideDelayHint"] = ("FloatingBarStrings", "Canvas_EdgeExpandHint_Settings_AutoHideDelayHint");
+            dict["Canvas_AnnotationDotHint_Text"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Text");
+            dict["Canvas_AnnotationDotHint_Keep"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Keep");
+            dict["Canvas_AnnotationDotHint_Exit"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Exit");
+            dict["Canvas_AnnotationDotHint_Settings_Enable"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_Enable");
+            dict["Canvas_AnnotationDotHint_Settings_EnableHint"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_EnableHint");
+            dict["Canvas_AnnotationDotHint_Settings_ClusterRadius"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_ClusterRadius");
+            dict["Canvas_AnnotationDotHint_Settings_StrokeLength"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_StrokeLength");
+            dict["Canvas_AnnotationDotHint_Settings_ClickCount"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_ClickCount");
+            dict["Canvas_AnnotationDotHint_Settings_DisplayDuration"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_DisplayDuration");
+            dict["Canvas_AnnotationDotHint_Settings_Preview"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_Preview");
+            dict["Canvas_AnnotationDotHint_Settings_PreviewHint"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_PreviewHint");
+            dict["Canvas_AnnotationDotHint_Settings_PreviewPlaceholder"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_PreviewPlaceholder");
+            dict["Canvas_AnnotationDotHint_Settings_PreviewLabel"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_PreviewLabel");
+            dict["Canvas_AnnotationDotHint_Settings_PreviewTriggered"] = ("FloatingBarStrings", "Canvas_AnnotationDotHint_Settings_PreviewTriggered");
             dict["IdleMiniBar_StartAnnotate"] = ("FloatingBarStrings", "IdleMiniBar_StartAnnotate");
             dict["IdleMiniBar_Annotate"] = ("FloatingBarStrings", "IdleMiniBar_Annotate");
             dict["IdleMiniBar_ClearPage"] = ("FloatingBarStrings", "IdleMiniBar_ClearPage");
@@ -560,6 +575,8 @@ namespace Ink_Canvas.Properties
             dict["Hotkey_EnableHotkeysInMouseModeHint"] = ("HotkeyStrings", "Hotkey_EnableHotkeysInMouseModeHint");
             dict["Hotkey_PassThroughMouseWheelInDrawingMode"] = ("HotkeyStrings", "Hotkey_PassThroughMouseWheelInDrawingMode");
             dict["Hotkey_PassThroughMouseWheelInDrawingModeHint"] = ("HotkeyStrings", "Hotkey_PassThroughMouseWheelInDrawingModeHint");
+            dict["Hotkey_EnablePPTPageKeyHook"] = ("HotkeyStrings", "Hotkey_EnablePPTPageKeyHook");
+            dict["Hotkey_EnablePPTPageKeyHookHint"] = ("HotkeyStrings", "Hotkey_EnablePPTPageKeyHookHint");
             dict["Hotkey_BasicOperations"] = ("HotkeyStrings", "Hotkey_BasicOperations");
             dict["Hotkey_UndoDesc"] = ("HotkeyStrings", "Hotkey_UndoDesc");
             dict["Hotkey_RedoDesc"] = ("HotkeyStrings", "Hotkey_RedoDesc");
@@ -1268,6 +1285,8 @@ namespace Ink_Canvas.Properties
             dict["ToolbarPage_SeparateBorderDesc"] = ("FloatingBarStrings", "ToolbarPage_SeparateBorderDesc");
             dict["ToolbarPage_DisplayMode"] = ("FloatingBarStrings", "ToolbarPage_DisplayMode");
             dict["ToolbarPage_QuickPaletteDisplayModeDesc"] = ("FloatingBarStrings", "ToolbarPage_QuickPaletteDisplayModeDesc");
+            dict["ToolbarPage_ComponentName"] = ("FloatingBarStrings", "ToolbarPage_ComponentName");
+            dict["ToolbarPage_ComponentNameDesc"] = ("FloatingBarStrings", "ToolbarPage_ComponentNameDesc");
             dict["ToolbarPage_Size"] = ("FloatingBarStrings", "ToolbarPage_Size");
             dict["ToolbarPage_FixedWidth"] = ("FloatingBarStrings", "ToolbarPage_FixedWidth");
             dict["ToolbarPage_FixedHeight"] = ("FloatingBarStrings", "ToolbarPage_FixedHeight");
