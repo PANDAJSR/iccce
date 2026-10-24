@@ -3546,7 +3546,7 @@ namespace Ink_Canvas
                 }
 
                 // 执行模式切换
-                inkCanvas.EditingMode = newMode;
+                inkCanvas.EditingMode = IsExternalAnnotationActive ? InkCanvasEditingMode.None : newMode;
                 SyncWinRTInkPipelineWithLogicalTool();
 
                 // 根据模式确定是否为鼠标模式（无工具模式）
@@ -3566,6 +3566,14 @@ namespace Ink_Canvas
 
                 // 执行额外的操作（如果有）
                 additionalActions?.Invoke();
+                if (IsExternalAnnotationActive)
+                {
+                    UpdateCurrentToolMode(newMode == InkCanvasEditingMode.Ink ? "pen" :
+                        newMode == InkCanvasEditingMode.Select ? "select" :
+                        newMode == InkCanvasEditingMode.EraseByPoint ? "eraser" :
+                        newMode == InkCanvasEditingMode.EraseByStroke ? "eraserByStrokes" : "cursor");
+                    SyncPresentationAnnotation();
+                }
                 return true;
 
             }
