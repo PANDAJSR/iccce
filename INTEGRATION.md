@@ -12,7 +12,7 @@
 
 | PR | 内容 | HEAD | 功能 worktree |
 | --- | --- | --- | --- |
-| [#716](https://github.com/InkCanvasForClass/community/pull/716) | 工具栏手动添加与设置图标 | `1a58812ec42c76472f6bd5501e423a33427e27c1` | `D:\Code\iccce-plugin-toolbar-pr` |
+| [#716](https://github.com/InkCanvasForClass/community/pull/716) | 工具栏手动添加与设置图标 | `a9500741bbe0f581bd691e03b6ee028d51999108` | `D:\Code\iccce-plugin-toolbar-pr` |
 | [#731](https://github.com/InkCanvasForClass/community/pull/731) | 文件插图接口 | `863151073a6826bf6412e0449b2bd064b057ff92` | `D:\Code\iccce-plugin-image-fix` |
 | [#737](https://github.com/InkCanvasForClass/community/pull/737) | 放映套索选择 | `244f37218d5b765577294a4d4d43ce607026aa04` | `C:\Users\PANDA-JSR\AppData\Local\Temp\opencode\iccce-playback-selection-pr` |
 | [#738](https://github.com/InkCanvasForClass/community/pull/738) | 保持应用主题 | `d746a65d8f6e0324ae9928afafd2e5e9ef6470c2` | `C:\Users\PANDA-JSR\AppData\Local\Temp\opencode\iccce-theme-pr` |
@@ -28,6 +28,7 @@
 - 两个 PR 分支均已推送，无强制推送；GitHub 均为 MERGEABLE，Lint、AnyCPU、x86 检查全部通过。
 - 本集成分支基于最新上游新建，以上六个 PR 依次自动合并，没有额外冲突解决代码。
 - 完整启动发现 #716 原 head 在同一插件注册首个组件时立刻写标记，后续自动组件被跳过。新增独立功能 worktree 修复：Initialize 期间固定首次状态，成功完成后才写标记，日志输出实际 autoAdd 判定。已推送并合入集成版。
+- 2026-10-31 用户人工发现删除自动组件后重启又加回。日志确认正常退出 UnloadAll 会无条件删除首次标记。#716 `a9500741` 进一步将布局/标记清理限于真正删除插件，删除时在注销前获取本插件组件归属，避免误清其他插件布局。已推送并合入集成版。
 
 ## 验证记录
 
@@ -37,6 +38,8 @@
 - #740：Debug x64 解决方案、Release 宿主构建通过；39 项运行时检查及 36 项 InputCapture 检查通过。
 - 原 head 复跑：#716 33 项、#731 40 项、#738 28 项运行时检查通过；#716 Debug x64 解决方案构建通过。
 - #716 修复后 Debug x64/Release 构建及原有 33 项通过。真实插件 LoadPlugin → Initialize 的多组件测试：旧 head 两项失败，修复后 9 项全部通过；故意抛出初始化异常的回滚检查 5 项通过，标记不写入且组件注册清理。
+- 2026-10-31 退出/重载修复：独立 #716 Debug x64/Release 构建通过；31 项生命周期检查通过，覆盖卸载/重载/UnloadAll/再次加载/真正删除及重装，并检查保留其他插件。另三个独立进程共享隔离配置共 18 项通过；原有 33 项与失败回滚 5 项通过。新人工副本 `pr716-retest-20261031` 等待用户反馈，旧 `pr716` 保留原样。
+- 集成版本本次重新通过 Debug x64/Release 构建及 31 项生命周期检查，人工 integration 副本已更新，配置保留。
 - 修复后另做完整 App 启动 smoke：宿主窗口正常响应，助手实际加载成功，日志确认两种工具栏的手动组件 autoAdd=False、自动组件 autoAdd=True。最终集成版本重新通过 Debug x64/Release 构建及 9 项真实多组件加载检查。
 - 最终集成副本完整启动 smoke 通过：真实 ENBX 插件与验证助手均成功加载，打开菜单桥接完成，ENBX 两类工具栏组件维持手动添加。
 - #747：Debug x64 解决方案构建通过，54 项 PresentationNavigation 检查通过；新增真实 MainWindow/演示服务/白板按钮/异步展开回归 29 项通过。
