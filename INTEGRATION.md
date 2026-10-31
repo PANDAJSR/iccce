@@ -58,3 +58,5 @@
 #716 用户已确认新版移除自动、加入手动后退出重启保持正常，结合此前截图确认浮动工具栏首次行为；已回复[维护者](https://github.com/InkCanvasForClass/community/pull/716#issuecomment-6537831879)，明确自动与人工覆盖范围。白板完整人工流程、热重载及图标最终人工验收未推断通过，其他 PR 仍等待人工结果。#738 要求迁移 net6 的事项仍单独待处理，本轮未改 PR 目标分支。
 
 #731 用户确认独立副本中延迟后台插图后切鼠标，图片正常出现、自动进入选择并可拖动缩放；已[回复维护者](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6537866970)。用户明确限定为这组步骤，其余人工项目仍待反馈。
+
+#731 追加人工通过：撤销/重做、实际拖动浮动工具栏后连续插图保持位置、小图不明显放大；已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6539784434)。竖排、白板切页/冻结、PPT、多屏/DPI 仍待人工结果。
