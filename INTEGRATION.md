@@ -64,3 +64,5 @@
 2026-11-03 #731 用户确认白板两页图片隔离、位置/大小保持、冻结拒绝插图及解冻恢复，已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6600063656)。竖排、真实 PPT、多屏/DPI 仍待人工结果。
 
 同日 #731 用户确认竖排工具栏实际拖动后连续插图，位置及按钮排列正常，图片可选择/拖动；已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6600440975)。剩余未确认人工项为真实 PPT、多屏/不同 DPI。
+
+2026-11-03 #737 用户确认独立测试副本的选择能力源：套索 True、画笔 False 回调和反复切换正常，已[回复维护者](https://github.com/InkCanvasForClass/community/pull/737#issuecomment-6603110640)。助手无课件渲染；白板漫游/往返、结束后的鼠标和真实 ENBX 未计为人工通过。
