@@ -62,3 +62,5 @@
 #731 追加人工通过：撤销/重做、实际拖动浮动工具栏后连续插图保持位置、小图不明显放大；已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6539784434)。竖排、白板切页/冻结、PPT、多屏/DPI 仍待人工结果。
 
 2026-11-03 #731 用户确认白板两页图片隔离、位置/大小保持、冻结拒绝插图及解冻恢复，已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6600063656)。竖排、真实 PPT、多屏/DPI 仍待人工结果。
+
+同日 #731 用户确认竖排工具栏实际拖动后连续插图，位置及按钮排列正常，图片可选择/拖动；已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6600440975)。剩余未确认人工项为真实 PPT、多屏/不同 DPI。
