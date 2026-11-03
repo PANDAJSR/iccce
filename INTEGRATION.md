@@ -68,3 +68,5 @@
 2026-11-03 #737 用户确认独立测试副本的选择能力源：套索 True、画笔 False 回调和反复切换正常，已[回复维护者](https://github.com/InkCanvasForClass/community/pull/737#issuecomment-6603110640)。助手无课件渲染；白板漫游/往返、结束后的鼠标和真实 ENBX 未计为人工通过。
 
 同日 #737 用户确认白板漫游后切画笔/套索、退出白板恢复课件选择、结束源后桌面鼠标均正常，已[补充回复](https://github.com/InkCanvasForClass/community/pull/737#issuecomment-6603175322)。真实 ENBX 套索/拖动仍待集成人工验证。
+
+同日用户确认 integration 构建 `2f8bff53` 与本机 ENBX 工作区的真实课件联调：套索/拖动、切画笔书写且不拖元素、白板往返后套索、退出后鼠标均正常。已分别回复 [#737](https://github.com/InkCanvasForClass/community/pull/737#issuecomment-6603394011) / [#740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603393941)，仅作为集成结果。完整批注笔型/擦除/历史/冻结及其他人工项仍待反馈。
