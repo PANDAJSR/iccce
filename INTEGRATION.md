@@ -76,3 +76,5 @@
 随后用户确认集成版宿主边界流程正常：进入白板原生书写/撤销只影响白板，返回课件撤销/重做状态及命令跟随课件且不影响白板，退出后原生书写/擦除/撤销恢复且无穿透残留。已[回复 #740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603583774)，冻结/捕获相关交互/硬件/旧插件仍未计为人工通过。
 
 用户进一步确认冻结状态反馈、冻结时撤销/重做禁用及清空受限、解冻后恢复均正常，已[回复 #740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603678553)。仅作为宿主状态及命令限制的集成结果；捕获相关交互、硬件及旧插件仍未确认。
+
+用户确认按钮按住约 1 秒松开、菜单展开选择、标题栏拖动和之后点击正常，已[回复 #740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603789406)，记录为集成鼠标捕获交互通过；触摸/手写笔及旧演示插件仍未确认。
