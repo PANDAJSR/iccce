@@ -60,3 +60,5 @@
 #731 用户确认独立副本中延迟后台插图后切鼠标，图片正常出现、自动进入选择并可拖动缩放；已[回复维护者](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6537866970)。用户明确限定为这组步骤，其余人工项目仍待反馈。
 
 #731 追加人工通过：撤销/重做、实际拖动浮动工具栏后连续插图保持位置、小图不明显放大；已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6539784434)。竖排、白板切页/冻结、PPT、多屏/DPI 仍待人工结果。
+
+2026-11-03 #731 用户确认白板两页图片隔离、位置/大小保持、冻结拒绝插图及解冻恢复，已[补充回复](https://github.com/InkCanvasForClass/community/pull/731#issuecomment-6600063656)。竖排、真实 PPT、多屏/DPI 仍待人工结果。
