@@ -5,7 +5,7 @@
 - 工作目录：`D:\Code\iccce-integration`
 - 分支：`integration/all-open-prs-2026-10-30`
 - 上游：`InkCanvasForClass/community`，`net10`
-- 基线：`db9f8e9d20d893b693e6d13a74ebfda2d8da482a`
+- 基线：`72dc708cb534369cf7604359956f7aa8b5e4a417`（2026-11-04 同步上游 net10；原基线 `db9f8e9d`）
 - 旧集成快照保留在 `integration/all-open-prs-2026-10-25`。
 
 ## PR 与合入顺序
@@ -22,6 +22,9 @@
 #743、#744 已在上游合并，不再单独聚合；#742 已关闭，其捕获修复包含于 #740。
 
 ## 本次冲突解决
+
+- 2026-11-04 合并最新上游 net10（78 个新增可达提交），四个文件发生冲突。工具切换保留 #740 的原生输入停用，并带入上游选择清理及 manipulation 切换；清空/撤销/重做先转发外部演示源，原生路径使用上游 ClearAllSelection；手写笔入口同时保留外部批注和选择模式的提前返回。
+- 直接采用上游 `2fbe03e8` 的 ScaleViewbox 透明度修复；未纳入排查期间独立 worktree 中的 AnimationsHelper 临时方案。
 
 - #737 在自己的 worktree 合并最新上游，`UpdateCurrentToolMode` 同时保留退出课件选择和上游漫游结束/接触点清理。
 - #740 合并更新后的 #737。两者原先携带不同 ID 的套索前置提交，五处冲突逐项保留外部批注路由、能力接口及生命周期，同时带入上游漫游清理。
