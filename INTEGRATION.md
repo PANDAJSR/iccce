@@ -35,6 +35,10 @@
 
 ## 验证记录
 
+2026-11-04 同步上游 `72dc708c` 后：Release AnyCPU 宿主及 Debug x64 解决方案构建通过，均 0 警告、0 错误。六个 PR 运行时场景分别 32/40/31/28/39/29 项，透明度专项 42 项，#716 生命周期 31 项，共 272 项通过；另 PresentationNavigation 54 项、InputCapture 36 项通过。透明度覆盖默认 0.5、实时全局修改、单处覆盖、三次白板往返、预览展开/收起、0/1 边界及单处隐藏后的延迟恢复。
+
+新版人工副本：`D:\Code\iccce-pr-manual-20261030\integration-upstream-20261104\Start-Test.cmd`，宿主代码合并提交 `7b2c102d`。复制旧 integration 的 Configs/PluginConfigs/Plugins，使用新构建宿主及依赖；旧副本仍运行，因此未执行新版完整启动 smoke，未将此前人工反馈当作新版人工通过。ENBX 仍为此前本机工作区构建。
+
 本轮工具、源码与日志：`C:\Users\PANDA-JSR\AppData\Local\Temp\opencode\iccce-pr-validation-20261030`。
 
 - #737：Debug x64 解决方案、Release 宿主构建通过；31 项运行时检查通过，含新增白板漫游切画笔/套索。
