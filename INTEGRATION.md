@@ -78,3 +78,5 @@
 用户进一步确认冻结状态反馈、冻结时撤销/重做禁用及清空受限、解冻后恢复均正常，已[回复 #740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603678553)。仅作为宿主状态及命令限制的集成结果；捕获相关交互、硬件及旧插件仍未确认。
 
 用户确认按钮按住约 1 秒松开、菜单展开选择、标题栏拖动和之后点击正常，已[回复 #740](https://github.com/InkCanvasForClass/community/pull/740#issuecomment-6603789406)，记录为集成鼠标捕获交互通过；触摸/手写笔及旧演示插件仍未确认。
+
+2026-11-04 用户确认集成版真实 ENBX 连续三次白板往返时翻页条进入隐藏、退出恢复，等待 2 秒仍可见且可翻页，退出课件全部隐藏，已[回复 #747](https://github.com/InkCanvasForClass/community/pull/747#issuecomment-6629241298)。单处翻页条显示设置、独立助手源人工流程及真实 PPT 尚未确认。
